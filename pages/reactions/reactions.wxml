@@ -80,4 +80,93 @@
       </view>
     </block>
   </view>
+
+  <view class="card reaction-demo-card" wx:if="{{activeReaction}}">
+    <view class="card-title">{{ui.reactionDemoTitle}}</view>
+
+    <scroll-view class="reaction-tabs" scroll-x enable-flex>
+      <view class="reaction-tabs-inner">
+        <block wx:for="{{reactionOptions}}" wx:key="id">
+          <button
+            class="reaction-tab-btn {{activeReactionId === item.id ? 'reaction-tab-btn-active' : ''}}"
+            data-id="{{item.id}}"
+            bindtap="selectReaction"
+          >
+            {{item.title}}
+          </button>
+        </block>
+      </view>
+    </scroll-view>
+
+    <view class="reaction-equation">{{activeReaction.equation}}</view>
+
+    <view class="reaction-stage">
+      <view wx:if="{{activeReaction.reactionType === 'ionic'}}" class="ionic-stage">
+        <block wx:for="{{activeReaction.species}}" wx:key="id" wx:for-item="sp">
+          <view class="ionic-node {{sp.slotClass}} {{demoFinal ? 'node-final' : ''}}">
+            <view class="ionic-symbol">{{sp.symbol}}</view>
+            <view class="ionic-name">{{sp.name}}</view>
+            <view wx:if="{{demoFinal}}" class="ionic-charge">{{sp.chargeText}}</view>
+          </view>
+        </block>
+
+        <block wx:for="{{activeReaction.lineClasses}}" wx:key="*this">
+          <view class="ionic-line {{item}}"></view>
+        </block>
+
+        <view wx:if="{{showDemoFly}}" class="ionic-fly-dot {{demoFlyClass}} {{demoFlyColorClass}}"></view>
+      </view>
+
+      <view wx:elif="{{activeReaction.reactionType === 'covalent'}}" class="covalent-stage">
+        <view class="cov-reactants">
+          <view class="cov-molecule cov-h2">H-H</view>
+          <view class="cov-molecule cov-o2 {{covalentPhase === 'break' ? 'bond-breaking' : ''}}">O=O</view>
+          <view class="cov-molecule cov-h2">H-H</view>
+        </view>
+
+        <view class="cov-transition">
+          <view class="cov-bond cov-old-bond {{(covalentPhase === 'regroup' || covalentPhase === 'form' || covalentPhase === 'final') ? 'bond-hide' : ''}}"></view>
+          <view class="cov-bond cov-new-bond {{(covalentPhase === 'form' || covalentPhase === 'final') ? 'bond-show' : ''}}"></view>
+          <view wx:if="{{showDemoFly}}" class="cov-fly-dot {{demoFlyClass}} {{demoFlyColorClass}}"></view>
+        </view>
+
+        <view class="cov-products {{(covalentPhase === 'form' || covalentPhase === 'final') ? 'product-show' : ''}}">H-O-H   +   H-O-H</view>
+      </view>
+    </view>
+
+    <view class="reaction-transfer-box">
+      <view class="transfer-head">{{demoHint}}</view>
+    </view>
+
+    <view class="reaction-actions">
+      <button class="reaction-act-btn reaction-play-btn" bindtap="playReactionDemo">{{ui.playBtn}}</button>
+      <button class="reaction-act-btn reaction-replay-btn" bindtap="replayReactionDemo">{{ui.replayBtn}}</button>
+    </view>
+
+    <view class="reaction-participants">
+      <block wx:for="{{activeReaction.species}}" wx:key="id">
+        <view class="participant-card">
+          <view class="participant-head">{{item.symbol}} {{item.name}} · {{item.role}}</view>
+          <view class="participant-row">
+            <text class="p-label">{{ui.beforeLabel}}</text>
+            <text class="p-value">{{ui.shellDistLabel}} {{item.beforeShellText}}</text>
+          </view>
+          <view class="participant-row">
+            <text class="p-label">{{ui.afterLabel}}</text>
+            <text class="p-value">{{ui.shellDistLabel}} {{item.afterShellText}}</text>
+          </view>
+          <view class="participant-row">
+            <text class="p-label">{{ui.outerLabel}}</text>
+            <text class="p-value">{{item.outerBefore}}e -> {{item.outerAfter}}e</text>
+          </view>
+          <view class="participant-row">
+            <text class="p-label">{{ui.chargeLabel}}</text>
+            <text class="p-value p-charge">{{item.chargeText}}</text>
+          </view>
+        </view>
+      </block>
+    </view>
+
+    <view wx:if="{{demoFinal}}" class="reaction-final-fixed">{{activeReaction.finalSummary}}</view>
+  </view>
 </view>
