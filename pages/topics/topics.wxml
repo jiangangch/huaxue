@@ -1,0 +1,10 @@
+<view class="container">
+  <view class="page-title">主题浏览</view>
+  <view class="page-subtitle">专题内容索引（内容后续完善）</view>
+
+  <block wx:for="{{topics}}" wx:key="*this">
+    <view class="card">
+      <view class="card-title">{{item}}</view>
+    </view>
+  </block>
+</view>

@@ -1,0 +1,83 @@
+<view class="container">
+  <view class="page-title">{{ui.title}}</view>
+  <view class="page-subtitle">{{ui.subtitle}}</view>
+
+  <view class="card switch-card">
+    <view class="switch-title">{{ui.switchTitle}}</view>
+    <view class="switch-row">
+      <block wx:for="{{elementButtons}}" wx:key="symbol">
+        <button
+          class="switch-btn {{activeSymbol === item.symbol ? 'switch-btn-active' : ''}}"
+          data-symbol="{{item.symbol}}"
+          bindtap="switchElement"
+        >
+          {{item.text}}
+        </button>
+      </block>
+    </view>
+  </view>
+
+  <view class="card atom-card" wx:if="{{atomVisible}}">
+    <view class="atom-stage">
+      <block wx:for="{{layers}}" wx:key="key" wx:for-item="layer">
+        <view class="orbit-layer {{layer.shellClass}}" style="width: {{layer.size}}rpx; height: {{layer.size}}rpx;">
+          <view class="orbit-circle"></view>
+
+          <view class="orbit-spin" style="animation-duration: {{layer.spinDuration}}s;">
+            <block wx:for="{{layer.electrons}}" wx:key="key" wx:for-item="electron">
+              <view
+                class="electron-dot {{layer.electronClass}}"
+                style="transform: rotate({{electron.angle}}deg) translateX({{electron.translate}}rpx);"
+              ></view>
+            </block>
+          </view>
+        </view>
+      </block>
+
+      <view class="nucleus">
+        <view class="nucleus-title">{{ui.nucleus}}</view>
+        <view class="nucleus-main">{{currentElement.symbol}}</view>
+        <view class="nucleus-info">{{ui.protonLabel}}: {{currentElement.atomicNumber}}</view>
+      </view>
+
+      <view class="layer-side">
+        <block wx:for="{{layers}}" wx:key="name" wx:for-item="layer">
+          <view class="layer-side-row">
+            <view class="layer-side-dot {{layer.electronClass}}"></view>
+            <text class="layer-side-text">{{layer.name}}{{ui.layerSuffix}} {{layer.count}}e</text>
+          </view>
+        </block>
+      </view>
+
+      <view wx:if="{{flyAnimClass}}" class="fly-electron {{flyAnimClass}} {{flyElectronClass}}"></view>
+    </view>
+
+    <view class="ion-actions">
+      <button class="ion-btn ion-gain" bindtap="gainElectron">{{ui.gainBtn}}</button>
+      <button class="ion-btn ion-loss" bindtap="loseElectron">{{ui.lossBtn}}</button>
+    </view>
+
+    <view class="range-box">
+      <text class="range-title">{{ui.commonRangeTitleWithColon}}</text>
+      <text class="range-value">{{commonRangeText}}</text>
+    </view>
+
+    <view wx:if="{{operationHint}}" class="hint-box">{{operationHint}}</view>
+
+    <view class="charge-box">
+      <text class="charge-title">{{ui.chargeTitleWithColon}}</text>
+      <text class="charge-value">{{chargeText}}</text>
+      <text class="charge-note">{{ui.neutralRef}}</text>
+    </view>
+  </view>
+
+  <view class="card layer-info-card">
+    <view class="card-title">{{ui.layerInfoTitle}}</view>
+    <block wx:for="{{layers}}" wx:key="name">
+      <view class="layer-row">
+        <text>{{item.name}}{{ui.layerSuffix}}</text>
+        <text>{{item.count}}{{ui.electronLabel}}</text>
+      </view>
+    </block>
+  </view>
+</view>

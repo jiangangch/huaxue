@@ -1,0 +1,71 @@
+<view class="container">
+  <view class="page-title">{{ui.title}}</view>
+  <view class="page-subtitle">{{ui.subtitle}}</view>
+
+  <view class="legend-wrap card">
+    <view class="legend-item">
+      <view class="legend-dot legend-metal"></view>
+      <text>{{ui.legendMetal}}</text>
+    </view>
+    <view class="legend-item">
+      <view class="legend-dot legend-nonmetal"></view>
+      <text>{{ui.legendNonmetal}}</text>
+    </view>
+    <view class="legend-item">
+      <view class="legend-dot legend-noble"></view>
+      <text>{{ui.legendNoble}}</text>
+    </view>
+  </view>
+
+  <view class="card table-card">
+    <view class="periodic-grid">
+      <block wx:for="{{gridCells}}" wx:key="key">
+        <view wx:if="{{item.empty}}" class="grid-cell empty-cell">
+          <text class="empty-dot">·</text>
+        </view>
+        <view
+          wx:else
+          class="grid-cell element-tile category-{{item.element.category}} {{activeSymbol === item.element.symbol ? 'is-active' : ''}}"
+          data-index="{{item.element._idx}}"
+          bindtap="openDetail"
+          bindtouchstart="openDetail"
+          bindmouseenter="openDetail"
+        >
+          <view class="no">{{item.element.no}}</view>
+          <view class="symbol">{{item.element.symbol}}</view>
+          <view class="name">{{item.element.name}}</view>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>
+
+<view wx:if="{{showPopup}}" class="popup-mask" bindtap="closeDetail">
+  <view class="popup-panel" catchtap="noop">
+    <view class="popup-title">{{selectedElement.symbol}} {{selectedElement.name}} · {{ui.popupTitleSuffix}}</view>
+    <view class="popup-subtitle">{{ui.seqNo}}：{{selectedElement.no}}</view>
+
+    <view class="detail-row">
+      <text class="label">{{ui.labelCategory}}</text>
+      <text class="value">{{selectedElement.categoryText}}</text>
+    </view>
+    <view class="detail-row">
+      <text class="label">{{ui.labelProtons}}</text>
+      <text class="value">{{selectedElement.protons}}</text>
+    </view>
+    <view class="detail-row">
+      <text class="label">{{ui.labelElectrons}}</text>
+      <text class="value">{{selectedElement.electrons}}</text>
+    </view>
+    <view class="detail-row">
+      <text class="label">{{ui.labelValence}}</text>
+      <text class="value">{{selectedElement.valence}}</text>
+    </view>
+    <view class="detail-row use-row">
+      <text class="label">{{ui.labelUsage}}</text>
+      <text class="value value-left">{{selectedElement.usage}}</text>
+    </view>
+
+    <button class="close-btn" bindtap="closeDetail">{{ui.close}}</button>
+  </view>
+</view>

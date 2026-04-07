@@ -1,0 +1,48 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/elements/elements",
+    "pages/reactions/reactions",
+    "pages/topics/topics"
+  ],
+  "window": {
+    "navigationBarTitleText": "\u4e0a\u6d77\u521d\u4e2d\u5316\u5b66",
+    "navigationBarBackgroundColor": "#0B3D91",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f5f7fb",
+    "backgroundTextStyle": "light"
+  },
+  "tabBar": {
+    "color": "#6b7280",
+    "selectedColor": "#0B3D91",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "\u9996\u9875",
+        "iconPath": "assets/tab/home.png",
+        "selectedIconPath": "assets/tab/home-active.png"
+      },
+      {
+        "pagePath": "pages/elements/elements",
+        "text": "\u5143\u7d20\u8ba4\u8bc6",
+        "iconPath": "assets/tab/elements.png",
+        "selectedIconPath": "assets/tab/elements-active.png"
+      },
+      {
+        "pagePath": "pages/reactions/reactions",
+        "text": "\u5316\u5b66\u53cd\u5e94",
+        "iconPath": "assets/tab/reactions.png",
+        "selectedIconPath": "assets/tab/reactions-active.png"
+      },
+      {
+        "pagePath": "pages/topics/topics",
+        "text": "\u4e3b\u9898\u6d4f\u89c8",
+        "iconPath": "assets/tab/topics.png",
+        "selectedIconPath": "assets/tab/topics-active.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}
