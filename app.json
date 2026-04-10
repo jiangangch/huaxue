@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/lesson/lesson",
     "pages/elements/elements",
     "pages/reactions/reactions",
     "pages/topics/topics"

@@ -1,12 +1,60 @@
+const knowledge = require('../../data/knowledge');
+
 Page({
   data: {
-    chapters: [
-      { title: '第一章 走进化学世界', summary: '化学研究对象、学科价值与学习方法（后续完善）' },
-      { title: '第二章 空气和氧气', summary: '空气组成、氧气性质与实验现象（后续完善）' },
-      { title: '第三章 分子与原子', summary: '微观粒子观点与物质构成基础（后续完善）' },
-      { title: '第四章 水与溶液', summary: '溶解、溶液浓度与生活应用（后续完善）' },
-      { title: '第五章 质量守恒与化学方程式', summary: '反应前后守恒关系与方程式表达（后续完善）' },
-      { title: '第六章 酸碱盐基础', summary: '常见酸碱盐性质和初步应用（后续完善）' }
-    ]
+    knowledgeTitle: '',
+    meta: [],
+    themes: [],
+    openThemes: {},
+    openTopics: {}
+  },
+
+  onLoad() {
+    this.setData({
+      knowledgeTitle: knowledge.title || '知识点目录',
+      meta: knowledge.meta || [],
+      themes: knowledge.themes || [],
+      openThemes: {},
+      openTopics: {}
+    });
+  },
+
+  toggleTheme(e) {
+    const themeId = e.currentTarget.dataset.id;
+    const openThemes = Object.assign({}, this.data.openThemes);
+    const openTopics = Object.assign({}, this.data.openTopics);
+
+    if (openThemes[themeId]) {
+      delete openThemes[themeId];
+      const theme = (this.data.themes || []).find((t) => t.id === themeId);
+      if (theme && theme.topics) {
+        theme.topics.forEach((topic) => {
+          if (topic && topic.id) delete openTopics[topic.id];
+        });
+      }
+    } else {
+      openThemes[themeId] = true;
+    }
+
+    this.setData({ openThemes, openTopics });
+  },
+
+  toggleTopic(e) {
+    const topicId = e.currentTarget.dataset.id;
+    const openTopics = Object.assign({}, this.data.openTopics);
+
+    if (openTopics[topicId]) delete openTopics[topicId];
+    else openTopics[topicId] = true;
+
+    this.setData({ openTopics });
+  },
+
+  openLesson(e) {
+    const lessonId = e.currentTarget.dataset.id;
+    if (!lessonId) return;
+
+    wx.navigateTo({
+      url: `/pages/lesson/lesson?id=${encodeURIComponent(lessonId)}`
+    });
   }
 });

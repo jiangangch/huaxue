@@ -1,0 +1,13 @@
+<view class="container">
+  <view class="lesson-hero">
+    <view wx:if="{{breadcrumb}}" class="breadcrumb">{{breadcrumb}}</view>
+    <view class="page-title">{{title}}</view>
+    <view class="hero-tip">重点内容已自动排版，建议按小节逐条阅读</view>
+  </view>
+
+  <view wx:if="{{error}}" class="error">{{error}}</view>
+
+  <view wx:if="{{!error}}" class="article-card">
+    <rich-text class="article-content" nodes="{{html}}"></rich-text>
+  </view>
+</view>

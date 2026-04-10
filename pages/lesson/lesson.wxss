@@ -1,0 +1,43 @@
+.lesson-hero {
+  background: linear-gradient(150deg, #f5f9ff 0%, #e8f1ff 100%);
+  border: 1rpx solid #d8e7ff;
+  border-radius: 18rpx;
+  padding: 20rpx 22rpx;
+  margin-bottom: 18rpx;
+}
+
+.breadcrumb {
+  font-size: 22rpx;
+  color: #4b6fae;
+  margin-bottom: 8rpx;
+}
+
+.lesson-hero .page-title {
+  margin-bottom: 6rpx;
+}
+
+.hero-tip {
+  font-size: 22rpx;
+  color: #5b6474;
+}
+
+.error {
+  padding: 20rpx 22rpx;
+  border-radius: 14rpx;
+  background: #fff1f2;
+  border: 1rpx solid #ffd5de;
+  color: #9f1239;
+  box-shadow: 0 6rpx 18rpx rgba(11, 61, 145, 0.07);
+}
+
+.article-card {
+  background: #ffffff;
+  border-radius: 18rpx;
+  border: 1rpx solid #e5ecf7;
+  padding: 24rpx 24rpx 10rpx;
+  box-shadow: 0 8rpx 20rpx rgba(11, 61, 145, 0.08);
+}
+
+.article-content {
+  display: block;
+}

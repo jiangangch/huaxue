@@ -100,37 +100,73 @@
 
     <view class="reaction-equation">{{activeReaction.equation}}</view>
 
-    <view class="reaction-stage">
-      <view wx:if="{{activeReaction.reactionType === 'ionic'}}" class="ionic-stage">
-        <block wx:for="{{activeReaction.species}}" wx:key="id" wx:for-item="sp">
-          <view class="ionic-node {{sp.slotClass}} {{demoFinal ? 'node-final' : ''}}">
-            <view class="ionic-symbol">{{sp.symbol}}</view>
-            <view class="ionic-name">{{sp.name}}</view>
-            <view wx:if="{{demoFinal}}" class="ionic-charge">{{sp.chargeText}}</view>
+    <view class="reaction-klm-stage">
+      <view class="compare-rows">
+        <block wx:for="{{reactionFormulaRows}}" wx:key="id" wx:for-item="row">
+          <view class="compare-row">
+            <view class="compare-row-label">{{row.symbol}}<text wx:if="{{row.count > 1}}" class="count-badge">x{{row.count}}</text></view>
+            <view class="compare-panels">
+              <view class="compare-panel">
+                <view class="panel-title">{{ui.beforeLabel}}</view>
+                <view wx:if="{{row.beforeCard}}" class="mini-atom-card formula-mini-card {{focusFromSymbol === row.beforeCard.symbol ? 'focus-lose' : ''}} {{focusToSymbol === row.beforeCard.symbol ? 'focus-gain' : ''}}">
+                  <view class="mini-atom-head">
+                    <text class="mini-head-left">{{row.beforeCard.symbol}} {{row.beforeCard.name}}</text>
+                  </view>
+                  <view class="mini-atom-stage">
+                    <block wx:for="{{row.beforeCard.layers}}" wx:key="key" wx:for-item="layer">
+                      <view class="mini-orbit-layer {{layer.shellClass}}" style="width: {{layer.size}}rpx; height: {{layer.size}}rpx;">
+                        <view class="mini-orbit-circle"></view>
+                        <view class="mini-orbit-spin" style="animation-duration: {{layer.spinDuration}}s;">
+                          <block wx:for="{{layer.electrons}}" wx:key="key" wx:for-item="electron">
+                            <view class="mini-electron-dot {{layer.electronClass}}" style="transform: rotate({{electron.angle}}deg) translateX({{electron.translate}}rpx);"></view>
+                          </block>
+                        </view>
+                      </view>
+                    </block>
+                    <view class="mini-nucleus">{{row.beforeCard.symbol}}</view>
+                  </view>
+                  <view class="mini-atom-meta">
+                    <view class="mini-charge-row">{{ui.chargeDeltaOnly}}: {{row.beforeCard.chargeText}}</view>
+                  </view>
+                </view>
+              </view>
+
+              <view class="compare-arrow">-></view>
+
+              <view class="compare-panel">
+                <view class="panel-title">{{ui.afterLabel}}</view>
+                <view wx:if="{{row.afterCard}}" class="mini-atom-card formula-mini-card {{focusFromSymbol === row.afterCard.symbol ? 'focus-lose' : ''}} {{focusToSymbol === row.afterCard.symbol ? 'focus-gain' : ''}}">
+                  <view class="mini-atom-head">
+                    <text class="mini-head-left">{{row.afterCard.symbol}} {{row.afterCard.name}}</text>
+                  </view>
+                  <view class="mini-atom-stage">
+                    <block wx:for="{{row.afterCard.layers}}" wx:key="key" wx:for-item="layer">
+                      <view class="mini-orbit-layer {{layer.shellClass}}" style="width: {{layer.size}}rpx; height: {{layer.size}}rpx;">
+                        <view class="mini-orbit-circle"></view>
+                        <view class="mini-orbit-spin" style="animation-duration: {{layer.spinDuration}}s;">
+                          <block wx:for="{{layer.electrons}}" wx:key="key" wx:for-item="electron">
+                            <view class="mini-electron-dot {{layer.electronClass}}" style="transform: rotate({{electron.angle}}deg) translateX({{electron.translate}}rpx);"></view>
+                          </block>
+                        </view>
+                      </view>
+                    </block>
+                    <view class="mini-nucleus">{{row.afterCard.symbol}}</view>
+                  </view>
+                  <view class="mini-atom-meta">
+                    <view class="mini-charge-row">{{ui.chargeDeltaOnly}}: {{row.afterCard.chargeText}}</view>
+                  </view>
+                </view>
+              </view>
+            </view>
+            <view wx:if="{{row.isCovalent}}" class="covalent-inline-note">{{ui.covalentLinkNote}}</view>
           </view>
         </block>
-
-        <block wx:for="{{activeReaction.lineClasses}}" wx:key="*this">
-          <view class="ionic-line {{item}}"></view>
-        </block>
-
-        <view wx:if="{{showDemoFly}}" class="ionic-fly-dot {{demoFlyClass}} {{demoFlyColorClass}}"></view>
       </view>
 
-      <view wx:elif="{{activeReaction.reactionType === 'covalent'}}" class="covalent-stage">
-        <view class="cov-reactants">
-          <view class="cov-molecule cov-h2">H-H</view>
-          <view class="cov-molecule cov-o2 {{covalentPhase === 'break' ? 'bond-breaking' : ''}}">O=O</view>
-          <view class="cov-molecule cov-h2">H-H</view>
-        </view>
+      <view wx:if="{{showDemoFly}}" class="demo-fly-dot {{demoFlyColorClass}}" style="{{demoFlyStyle}}"></view>
 
-        <view class="cov-transition">
-          <view class="cov-bond cov-old-bond {{(covalentPhase === 'regroup' || covalentPhase === 'form' || covalentPhase === 'final') ? 'bond-hide' : ''}}"></view>
-          <view class="cov-bond cov-new-bond {{(covalentPhase === 'form' || covalentPhase === 'final') ? 'bond-show' : ''}}"></view>
-          <view wx:if="{{showDemoFly}}" class="cov-fly-dot {{demoFlyClass}} {{demoFlyColorClass}}"></view>
-        </view>
-
-        <view class="cov-products {{(covalentPhase === 'form' || covalentPhase === 'final') ? 'product-show' : ''}}">H-O-H   +   H-O-H</view>
+      <view wx:if="{{activeReaction.reactionType === 'covalent'}}" class="covalent-tip {{covalentPhase}}">
+        {{ui.covRegroupText}}
       </view>
     </view>
 
@@ -141,30 +177,6 @@
     <view class="reaction-actions">
       <button class="reaction-act-btn reaction-play-btn" bindtap="playReactionDemo">{{ui.playBtn}}</button>
       <button class="reaction-act-btn reaction-replay-btn" bindtap="replayReactionDemo">{{ui.replayBtn}}</button>
-    </view>
-
-    <view class="reaction-participants">
-      <block wx:for="{{activeReaction.species}}" wx:key="id">
-        <view class="participant-card">
-          <view class="participant-head">{{item.symbol}} {{item.name}} · {{item.role}}</view>
-          <view class="participant-row">
-            <text class="p-label">{{ui.beforeLabel}}</text>
-            <text class="p-value">{{ui.shellDistLabel}} {{item.beforeShellText}}</text>
-          </view>
-          <view class="participant-row">
-            <text class="p-label">{{ui.afterLabel}}</text>
-            <text class="p-value">{{ui.shellDistLabel}} {{item.afterShellText}}</text>
-          </view>
-          <view class="participant-row">
-            <text class="p-label">{{ui.outerLabel}}</text>
-            <text class="p-value">{{item.outerBefore}}e -> {{item.outerAfter}}e</text>
-          </view>
-          <view class="participant-row">
-            <text class="p-label">{{ui.chargeLabel}}</text>
-            <text class="p-value p-charge">{{item.chargeText}}</text>
-          </view>
-        </view>
-      </block>
     </view>
 
     <view wx:if="{{demoFinal}}" class="reaction-final-fixed">{{activeReaction.finalSummary}}</view>

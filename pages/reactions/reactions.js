@@ -44,8 +44,8 @@ const REACTION_DEFS = [
       { id: "cl2", symbol: "Cl", name: "\u6c2f", atomicNumber: 17, slot: 5 }
     ],
     steps: [
-      { type: "electron_transfer", from: "na1", to: "cl1", shell: "M", path: "p1" },
-      { type: "electron_transfer", from: "na2", to: "cl2", shell: "M", path: "p2" }
+      { type: "electron_transfer", from: "na1", to: "cl1", shell: "M" },
+      { type: "electron_transfer", from: "na2", to: "cl2", shell: "M" }
     ]
   },
   {
@@ -60,10 +60,10 @@ const REACTION_DEFS = [
       { id: "o2", symbol: "O", name: "\u6c27", atomicNumber: 8, slot: 5 }
     ],
     steps: [
-      { type: "electron_transfer", from: "mg1", to: "o1", shell: "M", path: "p1" },
-      { type: "electron_transfer", from: "mg1", to: "o1", shell: "M", path: "p1" },
-      { type: "electron_transfer", from: "mg2", to: "o2", shell: "M", path: "p2" },
-      { type: "electron_transfer", from: "mg2", to: "o2", shell: "M", path: "p2" }
+      { type: "electron_transfer", from: "mg1", to: "o1", shell: "M" },
+      { type: "electron_transfer", from: "mg1", to: "o1", shell: "M" },
+      { type: "electron_transfer", from: "mg2", to: "o2", shell: "M" },
+      { type: "electron_transfer", from: "mg2", to: "o2", shell: "M" }
     ]
   },
   {
@@ -72,13 +72,13 @@ const REACTION_DEFS = [
     reactionType: "ionic",
     equation: "Ca + Cl2 -> CaCl2",
     species: [
-      { id: "ca1", symbol: "Ca", name: "\u9499", atomicNumber: 20, slot: 1 },
+      { id: "ca1", symbol: "Ca", name: "\u9499", atomicNumber: 20, slot: 2 },
       { id: "cl1", symbol: "Cl", name: "\u6c2f", atomicNumber: 17, slot: 4 },
-      { id: "cl2", symbol: "Cl", name: "\u6c2f", atomicNumber: 17, slot: 5 }
+      { id: "cl2", symbol: "Cl", name: "\u6c2f", atomicNumber: 17, slot: 6 }
     ],
     steps: [
-      { type: "electron_transfer", from: "ca1", to: "cl1", shell: "M", path: "p1" },
-      { type: "electron_transfer", from: "ca1", to: "cl2", shell: "M", path: "p2" }
+      { type: "electron_transfer", from: "ca1", to: "cl1", shell: "M" },
+      { type: "electron_transfer", from: "ca1", to: "cl2", shell: "M" }
     ]
   },
   {
@@ -88,18 +88,18 @@ const REACTION_DEFS = [
     equation: "2Al + 3Cl2 -> 2AlCl3",
     species: [
       { id: "al1", symbol: "Al", name: "\u94dd", atomicNumber: 13, slot: 1 },
-      { id: "al2", symbol: "Al", name: "\u94dd", atomicNumber: 13, slot: 2 },
-      { id: "cl1", symbol: "Cl", name: "\u6c2f", atomicNumber: 17, slot: 3 },
-      { id: "cl2", symbol: "Cl", name: "\u6c2f", atomicNumber: 17, slot: 4 },
-      { id: "cl3", symbol: "Cl", name: "\u6c2f", atomicNumber: 17, slot: 5 }
+      { id: "al2", symbol: "Al", name: "\u94dd", atomicNumber: 13, slot: 3 },
+      { id: "cl1", symbol: "Cl", name: "\u6c2f", atomicNumber: 17, slot: 4 },
+      { id: "cl2", symbol: "Cl", name: "\u6c2f", atomicNumber: 17, slot: 5 },
+      { id: "cl3", symbol: "Cl", name: "\u6c2f", atomicNumber: 17, slot: 6 }
     ],
     steps: [
-      { type: "electron_transfer", from: "al1", to: "cl1", shell: "M", path: "p0" },
-      { type: "electron_transfer", from: "al1", to: "cl2", shell: "M", path: "p1" },
-      { type: "electron_transfer", from: "al1", to: "cl3", shell: "M", path: "p2" },
-      { type: "electron_transfer", from: "al2", to: "cl1", shell: "M", path: "p0" },
-      { type: "electron_transfer", from: "al2", to: "cl2", shell: "M", path: "p1" },
-      { type: "electron_transfer", from: "al2", to: "cl3", shell: "M", path: "p2" }
+      { type: "electron_transfer", from: "al1", to: "cl1", shell: "M" },
+      { type: "electron_transfer", from: "al1", to: "cl2", shell: "M" },
+      { type: "electron_transfer", from: "al1", to: "cl3", shell: "M" },
+      { type: "electron_transfer", from: "al2", to: "cl1", shell: "M" },
+      { type: "electron_transfer", from: "al2", to: "cl2", shell: "M" },
+      { type: "electron_transfer", from: "al2", to: "cl3", shell: "M" }
     ]
   },
   {
@@ -108,13 +108,16 @@ const REACTION_DEFS = [
     reactionType: "covalent",
     equation: "2H2 + O2 -> 2H2O",
     species: [
-      { id: "H", symbol: "H", name: "\u6c22", atomicNumber: 1, slot: 1 },
-      { id: "O", symbol: "O", name: "\u6c27", atomicNumber: 8, slot: 4 }
+      { id: "h1", symbol: "H", name: "\u6c22", atomicNumber: 1, slot: 1 },
+      { id: "h2", symbol: "H", name: "\u6c22", atomicNumber: 1, slot: 2 },
+      { id: "o1", symbol: "O", name: "\u6c27", atomicNumber: 8, slot: 4 },
+      { id: "h3", symbol: "H", name: "\u6c22", atomicNumber: 1, slot: 5 },
+      { id: "h4", symbol: "H", name: "\u6c22", atomicNumber: 1, slot: 6 }
     ],
     steps: [
-      { type: "bond_break", phase: "break", shell: "L", path: "cov-break" },
-      { type: "pair_regroup", phase: "regroup", shell: "L", path: "cov-pair" },
-      { type: "bond_form", phase: "form", shell: "L", path: "cov-form" }
+      { type: "covalent_reorder", phase: "break", shell: "L" },
+      { type: "covalent_reorder", phase: "regroup", shell: "L" },
+      { type: "covalent_reorder", phase: "form", shell: "L" }
     ]
   }
 ];
@@ -124,11 +127,30 @@ const SHELL_SIZES = [180, 270, 360];
 const SPIN_DURATIONS = [7, 11, 15];
 const SHELL_CLASS = ["shell-k", "shell-l", "shell-m"];
 const ELECTRON_CLASS = ["electron-k", "electron-l", "electron-m"];
+
+const MINI_SHELL_SIZES = [56, 82, 108];
+const MINI_SPIN_DURATIONS = [4, 6.5, 9];
+const SLOT_POSITIONS = {
+  1: { x: "16%", y: "34%" },
+  2: { x: "50%", y: "34%" },
+  3: { x: "84%", y: "34%" },
+  4: { x: "16%", y: "76%" },
+  5: { x: "50%", y: "76%" },
+  6: { x: "84%", y: "76%" }
+};
 const SHELL_IDX = { K: 0, L: 1, M: 2 };
 const MAX_MODEL_ELECTRONS = 18;
 
 function clamp(num, min, max) {
   return Math.max(min, Math.min(max, num));
+}
+
+function normalizeShells(shells) {
+  const out = [0, 0, 0];
+  shells.forEach((n, idx) => {
+    if (idx < 3) out[idx] = n;
+  });
+  return out;
 }
 
 function buildShellsByRule(atomicNumber) {
@@ -165,38 +187,70 @@ function buildLayers(shells) {
   });
 }
 
+function buildMiniLayers(shells, keyPrefix) {
+  const normalized = normalizeShells(shells);
+  return normalized
+    .map((count, idx) => {
+      if (count <= 0) return null;
+      const size = MINI_SHELL_SIZES[idx];
+      const radius = Math.round(size / 2);
+      const angleStep = 360 / count;
+      const electrons = Array.from({ length: count }, (_, i) => ({
+        key: `${keyPrefix}-${idx}-${i}`,
+        angle: +(i * angleStep).toFixed(2),
+        translate: radius
+      }));
+
+      return {
+        key: `${keyPrefix}-layer-${idx}`,
+        name: SHELL_NAMES[idx],
+        count,
+        size,
+        spinDuration: MINI_SPIN_DURATIONS[idx],
+        shellClass: SHELL_CLASS[idx],
+        electronClass: ELECTRON_CLASS[idx],
+        electrons
+      };
+    })
+    .filter(Boolean);
+}
+
+function shellText(shells) {
+  const n = normalizeShells(shells);
+  return `${SHELL_NAMES[0]}:${n[0]}  ${SHELL_NAMES[1]}:${n[1]}  ${SHELL_NAMES[2]}:${n[2]}`;
+}
+
 function formatCharge(delta) {
   if (delta === 0) return "0";
   if (delta > 0) return `${delta}+`;
   return `${Math.abs(delta)}-`;
 }
 
-function shellText(shells) {
-  return SHELL_NAMES.map((n, i) => `${n}:${shells[i] || 0}`).join("  ");
-}
-
-function lastShellIndex(shells) {
-  for (let i = shells.length - 1; i >= 0; i -= 1) {
-    if (shells[i] > 0) return i;
+function outerElectrons(shells) {
+  const n = normalizeShells(shells);
+  for (let i = n.length - 1; i >= 0; i -= 1) {
+    if (n[i] > 0) return n[i];
   }
   return 0;
 }
 
-function padShells(shells) {
-  const out = [0, 0, 0];
-  shells.forEach((n, i) => {
-    if (i < 3) out[i] = n;
-  });
-  return out;
-}
-
 function getChangedShellIndex(currentShells, nextShells) {
-  const current = padShells(currentShells);
-  const next = padShells(nextShells);
+  const current = normalizeShells(currentShells);
+  const next = normalizeShells(nextShells);
   for (let i = 0; i < 3; i += 1) {
     if (current[i] !== next[i]) return i;
   }
   return Math.max(0, next.findIndex((n) => n > 0));
+}
+
+function getIonicRole(delta, ui) {
+  if (delta < 0) return ui.roleLose;
+  if (delta > 0) return ui.roleGain;
+  return ui.roleNeutral;
+}
+
+function slotPosition(slot) {
+  return SLOT_POSITIONS[slot] || SLOT_POSITIONS[2];
 }
 
 const ELEMENT_MAP = ELEMENT_LIST.reduce((acc, item) => {
@@ -221,118 +275,224 @@ function buildElementButtons() {
   });
 }
 
-function getIonicRole(delta, ui) {
-  if (delta < 0) return ui.roleLose;
-  if (delta > 0) return ui.roleGain;
-  return ui.roleNeutral;
+function enrichSpecies(species, reactionId) {
+  return species.map((sp) => {
+    const beforeShells = normalizeShells(sp.beforeShells);
+    const workingShells = normalizeShells(sp.workingShells);
+    const afterShells = normalizeShells(sp.afterShells);
+    return Object.assign({}, sp, {
+      beforeShellText: shellText(beforeShells),
+      workingShellText: shellText(workingShells),
+      afterShellText: shellText(afterShells),
+      beforeOuter: outerElectrons(beforeShells),
+      workingOuter: outerElectrons(workingShells),
+      afterOuter: outerElectrons(afterShells),
+      workingChargeText: formatCharge(sp.baseTotal - sp.workingTotal),
+      afterChargeText: formatCharge(sp.baseTotal - sp.afterTotal),
+      workingLayers: buildMiniLayers(workingShells, `${reactionId}-${sp.id}-working`)
+    });
+  });
 }
 
-function buildIonicReactionView(def, ui) {
-  const deltaMap = {};
+function buildReactionState(def, ui) {
+  const speciesMap = {};
+
   def.species.forEach((sp) => {
-    deltaMap[sp.id] = 0;
+    const total = clamp(sp.atomicNumber, 0, MAX_MODEL_ELECTRONS);
+    const beforeShells = normalizeShells(buildShellsByRule(total));
+    speciesMap[sp.id] = {
+      id: sp.id,
+      symbol: sp.symbol,
+      name: sp.name,
+      slot: sp.slot,
+      baseTotal: total,
+      beforeTotal: total,
+      workingTotal: total,
+      afterTotal: total,
+      beforeShells,
+      workingShells: beforeShells,
+      afterShells: beforeShells,
+      role: ui.roleNeutral
+    };
   });
 
   const steps = def.steps.map((step, idx) => {
-    deltaMap[step.from] -= 1;
-    deltaMap[step.to] += 1;
-    const shellIdx = SHELL_IDX[step.shell] == null ? 0 : SHELL_IDX[step.shell];
-    const colorClass = ELECTRON_CLASS[shellIdx] || "electron-k";
+    if (def.reactionType === "ionic") {
+      const fromSp = speciesMap[step.from];
+      const toSp = speciesMap[step.to];
+      if (fromSp && toSp) {
+        fromSp.afterTotal = clamp(fromSp.afterTotal - 1, 0, MAX_MODEL_ELECTRONS);
+        toSp.afterTotal = clamp(toSp.afterTotal + 1, 0, MAX_MODEL_ELECTRONS);
+      }
+      return {
+        key: `${def.id}-step-${idx}`,
+        type: step.type,
+        from: step.from,
+        to: step.to,
+        shell: step.shell,
+        text: `${ui.stepPrefix}${idx + 1}${ui.stepMid}${(fromSp ? fromSp.symbol : step.from).toUpperCase()}${ui.loseElectronText}${(toSp ? toSp.symbol : step.to).toUpperCase()}${ui.gainElectronText}(${step.shell}${ui.layerSuffix})`
+      };
+    }
+
+    let text = `${ui.stepPrefix}${idx + 1}${ui.stepMid}${ui.covBreakText}`;
+    if (step.phase === "regroup") text = `${ui.stepPrefix}${idx + 1}${ui.stepMid}${ui.covRegroupText}`;
+    if (step.phase === "form") text = `${ui.stepPrefix}${idx + 1}${ui.stepMid}${ui.covFormText}`;
     return {
       key: `${def.id}-step-${idx}`,
       type: step.type,
-      phase: step.phase || "",
-      text: `${ui.stepPrefix}${idx + 1}${ui.stepMid}${step.from.toUpperCase()}${ui.loseElectronText}${step.to.toUpperCase()}${ui.gainElectronText}(${step.shell}${ui.layerSuffix})`,
-      pathClass: `fly-${step.path}`,
-      lineClass: `line-${step.path}`,
-      colorClass
+      phase: step.phase,
+      shell: step.shell,
+      text
     };
   });
 
-  const lineClasses = Array.from(new Set(steps.map((s) => s.lineClass)));
-  const species = def.species.map((sp) => {
-    const beforeTotal = clamp(sp.atomicNumber, 0, MAX_MODEL_ELECTRONS);
-    const afterTotal = clamp(beforeTotal + deltaMap[sp.id], 0, MAX_MODEL_ELECTRONS);
-    const beforeShells = buildShellsByRule(beforeTotal);
-    const afterShells = buildShellsByRule(afterTotal);
-    return {
-      id: sp.id,
-      key: `${def.id}-${sp.id}`,
-      symbol: sp.symbol,
-      name: sp.name,
-      slotClass: `slot-${sp.slot}`,
-      role: getIonicRole(deltaMap[sp.id], ui),
-      beforeShellText: shellText(beforeShells),
-      afterShellText: shellText(afterShells),
-      outerBefore: beforeShells[beforeShells.length - 1] || 0,
-      outerAfter: afterShells[afterShells.length - 1] || 0,
-      chargeText: formatCharge(-deltaMap[sp.id])
-    };
-  });
+  const species = Object.keys(speciesMap)
+    .map((k) => speciesMap[k])
+    .sort((a, b) => a.slot - b.slot)
+    .map((sp) => {
+      const afterShells = normalizeShells(buildShellsByRule(sp.afterTotal));
+      const delta = sp.baseTotal - sp.afterTotal;
+      return Object.assign({}, sp, {
+        afterShells,
+        role: def.reactionType === "ionic" ? getIonicRole(delta, ui) : ui.roleShare
+      });
+    });
 
-  const charged = species.filter((s) => s.chargeText !== "0").map((s) => `${s.symbol}${s.chargeText}`);
-  const finalSummary = `${ui.finalPrefix}${charged.join(" + ")}`;
+  const enriched = enrichSpecies(species, def.id);
+
+  let finalSummary = `${ui.finalPrefix}${ui.covFinalText}`;
+  if (def.reactionType === "ionic") {
+    const charged = enriched
+      .filter((sp) => sp.afterChargeText !== "0")
+      .map((sp) => `${sp.symbol}${sp.afterChargeText}`);
+    finalSummary = `${ui.finalPrefix}${charged.join(" + ")}`;
+  }
 
   return {
     id: def.id,
     title: def.title,
-    reactionType: "ionic",
+    reactionType: def.reactionType,
     equation: def.equation,
-    species,
     steps,
-    lineClasses,
+    species: enriched,
     finalSummary
   };
 }
 
-function buildCovalentReactionView(def, ui) {
-  const steps = def.steps.map((step, idx) => ({
-    key: `${def.id}-step-${idx}`,
-    type: step.type,
-    phase: step.phase,
-    text:
-      step.type === "bond_break"
-        ? `${ui.stepPrefix}${idx + 1}${ui.stepMid}${ui.covBreakText}`
-        : step.type === "pair_regroup"
-          ? `${ui.stepPrefix}${idx + 1}${ui.stepMid}${ui.covRegroupText}`
-          : `${ui.stepPrefix}${idx + 1}${ui.stepMid}${ui.covFormText}`,
-    pathClass: `cov-${step.path}`,
-    colorClass: ELECTRON_CLASS[SHELL_IDX[step.shell] || 1] || "electron-l"
-  }));
+function buildReactionViews(ui) {
+  return REACTION_DEFS.map((def) => buildReactionState(def, ui));
+}
 
-  const species = def.species.map((sp) => {
-    const shells = buildShellsByRule(clamp(sp.atomicNumber, 0, MAX_MODEL_ELECTRONS));
-    return {
-      id: sp.id,
-      key: `${def.id}-${sp.id}`,
-      symbol: sp.symbol,
-      name: sp.name,
-      role: ui.roleShare,
-      beforeShellText: shellText(shells),
-      afterShellText: shellText(shells),
-      outerBefore: shells[shells.length - 1] || 0,
-      outerAfter: shells[shells.length - 1] || 0,
-      chargeText: "0"
-    };
-  });
-
+function buildDisplayCard(sp, reactionId, useAfter) {
   return {
-    id: def.id,
-    title: def.title,
-    reactionType: "covalent",
-    equation: def.equation,
-    species,
-    steps,
-    lineClasses: [],
-    finalSummary: `${ui.finalPrefix}${ui.covFinalText}`
+    key: `${reactionId}-${sp.id}-${useAfter ? "after" : "working"}`,
+    id: sp.id,
+    symbol: sp.symbol,
+    name: sp.name,
+    count: sp.count || 1,
+    chargeText: useAfter ? sp.afterChargeText : sp.workingChargeText,
+    layers: useAfter ? buildMiniLayers(sp.afterShells, `${reactionId}-${sp.id}-after`) : sp.workingLayers
   };
 }
 
-function buildReactionViews(ui) {
-  return REACTION_DEFS.map((def) => {
-    if (def.reactionType === "covalent") return buildCovalentReactionView(def, ui);
-    return buildIonicReactionView(def, ui);
+function buildReactionFormulaRows(reaction) {
+  if (!reaction || !reaction.species || !reaction.species.length) return [];
+
+  const ordered = cloneSpecies(reaction.species).sort((a, b) => a.slot - b.slot);
+  const symbols = ordered.reduce((acc, sp) => {
+    if (!acc.includes(sp.symbol)) acc.push(sp.symbol);
+    return acc;
+  }, []);
+  const aSymbol = symbols[0] || "A";
+  const bSymbol = symbols[1] || symbols[0] || "B";
+
+  const grouped = {};
+  ordered.forEach((sp) => {
+    if (!grouped[sp.symbol]) grouped[sp.symbol] = [];
+    grouped[sp.symbol].push(sp);
   });
+
+  const aGroup = grouped[aSymbol] || [];
+  const bGroup = grouped[bSymbol] || [];
+  const aBefore = aGroup[0]
+    ? buildDisplayCard(Object.assign({}, aGroup[0], { count: aGroup.length }), reaction.id, false)
+    : null;
+  const bBefore = bGroup[0]
+    ? buildDisplayCard(Object.assign({}, bGroup[0], { count: bGroup.length }), reaction.id, false)
+    : null;
+  const aAfter = aGroup[0]
+    ? buildDisplayCard(Object.assign({}, aGroup[0], { count: aGroup.length }), reaction.id, true)
+    : null;
+  const bAfter = bGroup[0]
+    ? buildDisplayCard(Object.assign({}, bGroup[0], { count: bGroup.length }), reaction.id, true)
+    : null;
+
+  const covalentLinks =
+    reaction.reactionType === "covalent"
+      ? [
+          {
+            id: `${reaction.id}-cov-link`,
+            from: aSymbol,
+            to: bSymbol
+          }
+        ]
+      : [];
+
+  return [
+    {
+      id: `${reaction.id}-line-a`,
+      symbol: aSymbol,
+      count: aGroup.length,
+      beforeCard: aBefore,
+      afterCard: aAfter,
+      isCovalent: false
+    },
+    {
+      id: `${reaction.id}-line-b`,
+      symbol: bSymbol,
+      count: bGroup.length,
+      beforeCard: bBefore,
+      afterCard: bAfter,
+      isCovalent: reaction.reactionType === "covalent",
+      covalentLinks
+    }
+  ];
+}
+
+function cloneSpecies(species) {
+  return species.map((sp) => Object.assign({}, sp));
+}
+
+function buildFlyForStep(step, species) {
+  if (step.type === "electron_transfer") {
+    const fromSp = species.find((s) => s.id === step.from);
+    const toSp = species.find((s) => s.id === step.to);
+    const fromPos = slotPosition(fromSp ? fromSp.slot : 2);
+    const toPos = slotPosition(toSp ? toSp.slot : 5);
+    const shellIdx = SHELL_IDX[step.shell] == null ? 0 : SHELL_IDX[step.shell];
+    return {
+      show: true,
+      style: `--sx:${fromPos.x};--sy:${fromPos.y};--ex:${toPos.x};--ey:${toPos.y};`,
+      colorClass: ELECTRON_CLASS[shellIdx] || "electron-k",
+      focusFromSymbol: fromSp ? fromSp.symbol : "",
+      focusToSymbol: toSp ? toSp.symbol : ""
+    };
+  }
+
+  const covMap = {
+    break: { sx: "44%", sy: "30%", ex: "56%", ey: "30%", colorClass: "electron-l", phase: "break" },
+    regroup: { sx: "38%", sy: "30%", ex: "62%", ey: "30%", colorClass: "electron-l", phase: "regroup" },
+    form: { sx: "50%", sy: "30%", ex: "50%", ey: "30%", colorClass: "electron-l", phase: "form" }
+  };
+  const cfg = covMap[step.phase] || covMap.break;
+  return {
+    show: true,
+    style: `--sx:${cfg.sx};--sy:${cfg.sy};--ex:${cfg.ex};--ey:${cfg.ey};`,
+    colorClass: cfg.colorClass,
+    focusFromSymbol: "",
+    focusToSymbol: "",
+    covalentPhase: cfg.phase
+  };
 }
 
 Page({
@@ -375,7 +535,9 @@ Page({
       covBreakText: "\u65e7\u952e\u5f31\u5316\u5e76\u65ad\u88c2\uff08H-H, O=O\uff09",
       covRegroupText: "\u7535\u5b50\u5bf9\u91cd\u7ec4\u5230O-H\u6210\u952e\u4f4d\u7f6e",
       covFormText: "\u5f62\u62102\u4e2aH2O\u5206\u5b50\u7684\u5171\u4ef7\u952e",
-      covFinalText: "2H2O\u6210\u952e\u5b8c\u6210\uff0c\u7535\u5b50\u5bf9\u5171\u4eab\uff0c\u5206\u5b50\u6574\u4f53\u4e2d\u6027"
+      covFinalText: "2H2O\u6210\u952e\u5b8c\u6210\uff0c\u5171\u4eab\u7535\u5b50\u5bf9\u5f62\u6210\uff0c\u5206\u5b50\u6574\u4f53\u4e2d\u6027",
+      chargeDeltaOnly: "\u7535\u8377\u53d8\u5316",
+      covalentLinkNote: "\u5171\u4ef7\u5173\u8054"
     },
     elementButtons: buildElementButtons(),
     activeSymbol: "H",
@@ -393,13 +555,16 @@ Page({
     reactionViews: [],
     activeReactionId: "",
     activeReaction: null,
+    reactionFormulaRows: [],
     demoHint: "",
     demoStep: 0,
     demoPlaying: false,
     demoFinal: false,
     showDemoFly: false,
-    demoFlyClass: "",
+    demoFlyStyle: "",
     demoFlyColorClass: "electron-k",
+    focusFromSymbol: "",
+    focusToSymbol: "",
     covalentPhase: "before"
   },
 
@@ -533,13 +698,16 @@ Page({
       reactionOptions: views.map((r) => ({ id: r.id, title: r.title })),
       activeReactionId: first.id,
       activeReaction: first,
+      reactionFormulaRows: buildReactionFormulaRows(first),
       demoHint: first.steps[0] ? first.steps[0].text : "",
       demoStep: 0,
       demoPlaying: false,
       demoFinal: false,
       showDemoFly: false,
-      demoFlyClass: "",
+      demoFlyStyle: "",
       demoFlyColorClass: "electron-k",
+      focusFromSymbol: "",
+      focusToSymbol: "",
       covalentPhase: "before"
     });
   },
@@ -554,13 +722,16 @@ Page({
     this.setData({
       activeReactionId: selected.id,
       activeReaction: selected,
+      reactionFormulaRows: buildReactionFormulaRows(selected),
       demoHint: selected.steps[0] ? selected.steps[0].text : "",
       demoStep: 0,
       demoPlaying: false,
       demoFinal: false,
       showDemoFly: false,
-      demoFlyClass: "",
+      demoFlyStyle: "",
       demoFlyColorClass: "electron-k",
+      focusFromSymbol: "",
+      focusToSymbol: "",
       covalentPhase: "before"
     });
   },
@@ -573,6 +744,8 @@ Page({
       demoFinal: false,
       demoStep: 0,
       showDemoFly: false,
+      focusFromSymbol: "",
+      focusToSymbol: "",
       covalentPhase: "before"
     });
     this.runReactionStep(0);
@@ -581,15 +754,32 @@ Page({
   replayReactionDemo() {
     if (!this.data.activeReaction) return;
     this.clearReactionDemoTimers();
+
+    const resetSpecies = enrichSpecies(
+      this.data.activeReaction.species.map((sp) =>
+        Object.assign({}, sp, {
+          workingTotal: sp.beforeTotal,
+          workingShells: sp.beforeShells
+        })
+      ),
+      this.data.activeReaction.id
+    );
+
+    const resetReaction = Object.assign({}, this.data.activeReaction, { species: resetSpecies });
+
     this.setData({
+      activeReaction: resetReaction,
+      reactionFormulaRows: buildReactionFormulaRows(resetReaction),
       demoPlaying: false,
       demoFinal: false,
       demoStep: 0,
       showDemoFly: false,
-      demoFlyClass: "",
+      demoFlyStyle: "",
       demoFlyColorClass: "electron-k",
+      focusFromSymbol: "",
+      focusToSymbol: "",
       covalentPhase: "before",
-      demoHint: this.data.activeReaction.steps[0] ? this.data.activeReaction.steps[0].text : ""
+      demoHint: resetReaction.steps[0] ? resetReaction.steps[0].text : ""
     });
     this.playReactionDemo();
   },
@@ -599,38 +789,79 @@ Page({
     if (!reaction) return;
 
     if (idx >= reaction.steps.length) {
+      const finalizedSpecies = enrichSpecies(
+        cloneSpecies(reaction.species).map((sp) =>
+          Object.assign({}, sp, {
+            workingTotal: sp.afterTotal,
+            workingShells: sp.afterShells
+          })
+        ),
+        reaction.id
+      );
+
+      const finalReaction = Object.assign({}, reaction, { species: finalizedSpecies });
       this.setData({
+        activeReaction: finalReaction,
+        reactionFormulaRows: buildReactionFormulaRows(finalReaction),
         demoPlaying: false,
         demoFinal: true,
         showDemoFly: false,
         demoHint: reaction.finalSummary,
+        focusFromSymbol: "",
+        focusToSymbol: "",
         covalentPhase: "final"
       });
       return;
     }
 
     const step = reaction.steps[idx];
-    const nextState = {
-      demoStep: idx + 1,
-      demoHint: step.text,
-      demoFlyClass: step.pathClass || "",
-      demoFlyColorClass: step.colorClass || "electron-k",
-      showDemoFly: false
-    };
+    let nextSpecies = cloneSpecies(reaction.species);
 
-    if (reaction.reactionType === "covalent") {
-      nextState.covalentPhase = step.phase || "process";
+    if (reaction.reactionType === "ionic" && step.type === "electron_transfer") {
+      nextSpecies = nextSpecies.map((sp) => {
+        if (sp.id === step.from) {
+          const nextTotal = clamp(sp.workingTotal - 1, 0, MAX_MODEL_ELECTRONS);
+          return Object.assign({}, sp, {
+            workingTotal: nextTotal,
+            workingShells: normalizeShells(buildShellsByRule(nextTotal))
+          });
+        }
+        if (sp.id === step.to) {
+          const nextTotal = clamp(sp.workingTotal + 1, 0, MAX_MODEL_ELECTRONS);
+          return Object.assign({}, sp, {
+            workingTotal: nextTotal,
+            workingShells: normalizeShells(buildShellsByRule(nextTotal))
+          });
+        }
+        return sp;
+      });
     }
 
-    this.setData(nextState);
+    nextSpecies = enrichSpecies(nextSpecies, reaction.id);
+
+    const fly = buildFlyForStep(step, nextSpecies);
+    const nextReaction = Object.assign({}, reaction, { species: nextSpecies });
+
+    this.setData({
+      activeReaction: nextReaction,
+      reactionFormulaRows: buildReactionFormulaRows(nextReaction),
+      demoStep: idx + 1,
+      demoHint: step.text,
+      demoFlyStyle: fly.style,
+      demoFlyColorClass: fly.colorClass,
+      showDemoFly: false,
+      focusFromSymbol: fly.focusFromSymbol || "",
+      focusToSymbol: fly.focusToSymbol || "",
+      covalentPhase: fly.covalentPhase || this.data.covalentPhase
+    });
 
     this.demoPulseTimer = setTimeout(() => {
-      this.setData({ showDemoFly: true });
+      this.setData({ showDemoFly: fly.show });
       this.demoStepTimer = setTimeout(() => {
         this.setData({ showDemoFly: false });
         this.demoGapTimer = setTimeout(() => {
           this.runReactionStep(idx + 1);
-        }, 240);
+        }, 260);
       }, 700);
     }, 20);
   },
